@@ -14,10 +14,14 @@
 </template>
 
 
-<script setup lang="ts" name="ReqTes">
+<script setup lang="ts" name="ReqTestInfo">
 // import tdms2obj from "../assets/js/TdmsReading.min.js"
 // import axios from 'axios'
+
+
 import axios from '../api/http.js'
+
+
 // import Nprogress from 'nprogress'
 // import 'nprogress/nprogress.css'
 // import AddOrUpdate from '../pages/AddOrUpdate.vue'

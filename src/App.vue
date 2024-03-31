@@ -33,8 +33,8 @@
     </div>
   </template>
   
-  <script setup lang="ts">    
-    import ReqTestInfo from "@/components/ReqTestInfo.vue"
+  <script setup lang="ts" name="ReqTestInfo">    
+    import ReqTestInfo from "./components/ReqTestInfo.vue"
     //   data() {
     //     return {
     //       allTestInfo: {},
