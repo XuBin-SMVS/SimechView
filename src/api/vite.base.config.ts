@@ -5,16 +5,16 @@ import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 
 export default defineConfig({
     plugins: [
-            vue(),
-            VueSetupExtend()
-          ],
-          resolve: {
-            alias: {
-              '@': fileURLToPath(new URL('./src', import.meta.url))
-            }
-          },
+      vue(),
+      VueSetupExtend()
+    ],
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url))
+      }
+    },
 
     optimizeDeps:{
         exclude:[]
-    },
+    }
 })

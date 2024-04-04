@@ -31,6 +31,8 @@ const envResolver = {
   }
 }
 
-export default defineConfig(({command})=>{
+export default defineConfig(({command, mode})=>{
+
+  // console.log("process ", process.env)
   return envResolver[command]()
 })

@@ -1,5 +1,6 @@
 <template>
     <div >
+         
           <div class="input-group ">
                 <label  class="input-group-text" for="doku">DOKU Number &nbsp;&nbsp;</label>
                 <input type="text" class="form-control" v-model="dokuNumber" @keyup.enter="loadTestInfo">
@@ -15,14 +16,45 @@
 
 
 <script setup lang="ts" name="ReqTestInfo">
-// import tdms2obj from "../assets/js/TdmsReading.min.js"
-// import axios from 'axios'
+
+  import {ref, reactive} from 'vue'
+  import {storeToRefs} from 'pinia'
+  import {useTestInfo} from "../stores/useTestInfo"
 
 
-import axios from '../api/http.js'
+  let testInfo = useTestInfo()
+
+  let {allTestInfo, dokuNumber} = storeToRefs(testInfo)
+
+  function loadTestInfo (){
+      testInfo.loadTestInfo()
+  } 
 
 
-// import Nprogress from 'nprogress'
+
+
+// function loadTestInfo() {
+//         // Nprogress.start()    
+//         console.log(allTestInfo.value) 
+//         axios.get(`/get-me-record?doku=${dokuNumber.value}`)     //https://63mr015465.imdo.co        
+//               .then(res =>{
+//                       // if (res.data.message.length > 0) {
+//                       // console.log(axios.defaults.transformRequest)  
+//                       console.log(res.data)
+//                       // Nprogress.done() 
+//                       // if (res.status === 0) {
+                          
+//                       //     this.getTestInfo(JSON.parse(res.message[0].testInfo))
+//                       //     this.setDokuNumber(this.dokuNumber)
+//                       //     // console.log(this.$router)
+//                       //     // this.$router.go(this.$router.options[1])
+//                       //     // this.$router.replace('/refresh')
+//                       // }else {alert("Worng DOKU number!")}
+//                     },
+//                     err => {alert(err)}
+//                )
+//     }
+// // import Nprogress from 'nprogress'
 // import 'nprogress/nprogress.css'
 // import AddOrUpdate from '../pages/AddOrUpdate.vue'
 
