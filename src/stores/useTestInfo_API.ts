@@ -1,13 +1,47 @@
 import {defineStore} from 'pinia'
 import {ref, reactive} from 'vue'
-import axios from '../api/http'
+import axios from '@/api/http'
 import {type AxiosResponse} from 'axios'
+import {type AllAvaliableTestInfo} from '@/types/index'
+
+
 
 export const useTestInfo = defineStore('testInfo', ()=>{
     
     
     const allTestInfo = reactive({})
-    const dokuNumber = ref("")
+    const dokuNumber = ref("")  
+    const arrangedDokuList: {[key:string]:AllAvaliableTestInfo} = reactive({})
+
+    //获取所有与登录人相关的具有自动化测试数据的doku信息，以年为数据组
+    function getAllAvaliableTestInfo(){
+        axios.get(`\get-avaliable-info`)
+            .then(res=>{
+
+                // ArrangedDokuList: {2022:[],2023:[]}
+
+                for (let y =2022; y<= new Date().getFullYear(); y++) {
+                    arrangedDokuList[y.toString()] = []
+                }
+
+                Object.keys(arrangedDokuList).forEach((item)=>{
+                    // console.log(item)
+                    arrangedDokuList[item] =   res.data.message.filter((record:{dokuno:string,[key:string]:any}) => {
+                        return record.dokuno.slice(0,2) === item.slice(2,4)
+                    })
+
+
+                })
+                
+
+
+            },
+            err=>{
+                
+            }        
+        
+        )
+    }
 
     function loadTestInfo() {
 
@@ -34,8 +68,7 @@ export const useTestInfo = defineStore('testInfo', ()=>{
                )
     }
 
-
-    return {allTestInfo, dokuNumber, loadTestInfo}
+    return {allTestInfo, dokuNumber, arrangedDokuList, loadTestInfo, getAllAvaliableTestInfo}
 
 
 }) 

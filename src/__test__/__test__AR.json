@@ -1,0 +1,819 @@
+{
+    "Doku": "22-115-5",
+    "Client": "张三",
+    "ProductName": "8DJH NKU 1250A",
+    "PanelType": "L",
+    "Station": "1",
+    "ControlVoltage": 220,
+    "TestProcess": [
+        [
+            1,
+            {
+                "CaseName": "CB_C_O",
+                "Interval1": 30,
+                "Interval2": 30,
+                "Cycle": 4000,
+                "TriggerCycleResistance": 2000,
+                "TriggerCycleTorque": 0
+            }
+        ],
+        [
+            1,
+            {
+                "CaseName": "CB_AR",
+                "Interval1": 30,
+                "Interval2": 0.15,
+                "Cycle": 1000,
+                "TriggerCycleResistance": 2000,
+                "TriggerCycleTorque": 0
+            }
+        ],
+        [
+            1,
+            {
+                "CaseName": "CB_C_O",
+                "Interval1": 30,
+                "Interval2": 30,
+                "Cycle": 1500,
+                "TriggerCycleResistance": 2000,
+                "TriggerCycleTorque": 0
+            }
+        ],
+        [
+            1,
+            {
+                "CaseName": "CB_AR",
+                "Interval1": 30,
+                "Interval2": 0.15,
+                "Cycle": 500,
+                "TriggerCycleResistance": 2000,
+                "TriggerCycleTorque": 0
+            }
+        ],
+        [
+            1,
+            {
+                "CaseName": "CB_C_O",
+                "Interval1": 30,
+                "Interval2": 30,
+                "Cycle": 1500,
+                "TriggerCycleResistance": 2000,
+                "TriggerCycleTorque": 0
+            }
+        ],
+        [
+            1,
+            {
+                "CaseName": "CB_AR",
+                "Interval1": 30,
+                "Interval2": 0.15,
+                "Cycle": 500,
+                "TriggerCycleResistance": 2000,
+                "TriggerCycleTorque": 0
+            }
+        ],
+        [
+            1,
+            {
+                "CaseName": "CB_C_O",
+                "Interval1": 30,
+                "Interval2": 30,
+                "Cycle": 500,
+                "TriggerCycleResistance": 2000,
+                "TriggerCycleTorque": 0
+            }
+        ],
+        [
+            1,
+            {
+                "CaseName": "CB_AR",
+                "Interval1": 30,
+                "Interval2": 0.15,
+                "Cycle": 500,
+                "TriggerCycleResistance": 2000,
+                "TriggerCycleTorque": 0
+            }
+        ],
+        [
+            1,
+            {
+                "CaseName": "CB_C_O",
+                "Interval1": 30,
+                "Interval2": 30,
+                "Cycle": 1500,
+                "TriggerCycleResistance": 2000,
+                "TriggerCycleTorque": 0
+            }
+        ],
+        [
+            1,
+            {
+                "CaseName": "CB_AR",
+                "Interval1": 30,
+                "Interval2": 0.15,
+                "Cycle": 500,
+                "TriggerCycleResistance": 2000,
+                "TriggerCycleTorque": 0
+            }
+        ]
+    ],
+    "CharacteristicsLimits": {
+        "CB_C": [
+            {
+                "ItemID": 0,
+                "ItemName": "Total travel - Closing (°)",
+                "Min": 61,
+                "Max": 69.5
+            },
+            {
+                "ItemID": 1,
+                "ItemName": "Overshoot angle (°)",
+                "Min": 3,
+                "Max": 7.5
+            },
+            {
+                "ItemID": 2,
+                "ItemName": "Final closing angular velocity (°/ms)",
+                "Min": 0,
+                "Max": 10
+            },
+            {
+                "ItemID": 3,
+                "ItemName": "Closing angular velocity (°/ms)",
+                "Min": 3.5,
+                "Max": 7.5
+            },
+            {
+                "ItemID": 4,
+                "ItemName": "Closing travel (°)",
+                "Min": 0,
+                "Max": 100
+            },
+            {
+                "ItemID": 5,
+                "ItemName": "Closing overrun travel (°)",
+                "Min": 0,
+                "Max": 100
+            },
+            {
+                "ItemID": 6,
+                "ItemName": "Contact synchronicity (ms)",
+                "Min": 0,
+                "Max": 2
+            },
+            {
+                "ItemID": 7,
+                "ItemName": "Total contact bounce time (ms)",
+                "Min": 0,
+                "Max": 2
+            },
+            {
+                "ItemID": 8,
+                "ItemName": "Max. single contact bounce time (ms)",
+                "Min": 0,
+                "Max": 1.5
+            },
+            {
+                "ItemID": 9,
+                "ItemName": "Number of contact bounces ",
+                "Min": 0,
+                "Max": 4
+            }
+        ],
+        "CB_O": [
+            {
+                "ItemID": 0,
+                "ItemName": "Total travel - Opening (°)",
+                "Min": 61,
+                "Max": 69.5
+            },
+            {
+                "ItemID": 1,
+                "ItemName": "Max positive reverse position (°)",
+                "Min": 0,
+                "Max": 100
+            },
+            {
+                "ItemID": 2,
+                "ItemName": "Max negative reverse position (°)",
+                "Min": 0,
+                "Max": 100
+            },
+            {
+                "ItemID": 3,
+                "ItemName": "Overshoot angle (°)",
+                "Min": 0,
+                "Max": 8
+            },
+            {
+                "ItemID": 4,
+                "ItemName": "Swing back angle (°)",
+                "Min": 0,
+                "Max": 4
+            },
+            {
+                "ItemID": 5,
+                "ItemName": "Opening angular velocity (°/ms)",
+                "Min": 3.5,
+                "Max": 7.5
+            },
+            {
+                "ItemID": 6,
+                "ItemName": "Contact synchronicity (ms)",
+                "Min": 0,
+                "Max": 2
+            }
+        ],
+        "DS_C": [
+            {
+                "ItemID": 0,
+                "ItemName": "Travel - Closing (°)",
+                "Min": 45,
+                "Max": 56
+            },
+            {
+                "ItemID": 1,
+                "ItemName": "Closing angular velocity (°/ms)",
+                "Min": 2,
+                "Max": 4
+            },
+            {
+                "ItemID": 2,
+                "ItemName": "Contact synchronicity (ms)",
+                "Min": 0,
+                "Max": 2
+            },
+            {
+                "ItemID": 3,
+                "ItemName": "Total contact bounce time (ms)",
+                "Min": 0,
+                "Max": 10
+            },
+            {
+                "ItemID": 4,
+                "ItemName": "Max. single contact bounce time (ms)",
+                "Min": 0,
+                "Max": 10
+            },
+            {
+                "ItemID": 5,
+                "ItemName": "Number of contact bounces ",
+                "Min": 0,
+                "Max": 10
+            }
+        ],
+        "ES_C": [
+            {
+                "ItemID": 0,
+                "ItemName": "Travel - Closing (°)",
+                "Min": 47,
+                "Max": 56
+            },
+            {
+                "ItemID": 1,
+                "ItemName": "Closing angular velocity (°/ms)",
+                "Min": 2.3,
+                "Max": 4
+            },
+            {
+                "ItemID": 2,
+                "ItemName": "Contact synchronicity (ms)",
+                "Min": 0,
+                "Max": 10
+            },
+            {
+                "ItemID": 3,
+                "ItemName": "Total contact bounce time (ms)",
+                "Min": 0,
+                "Max": 10
+            },
+            {
+                "ItemID": 4,
+                "ItemName": "Max. single contact bounce time (ms)",
+                "Min": 0,
+                "Max": 10
+            },
+            {
+                "ItemID": 5,
+                "ItemName": "Number of contact bounces ",
+                "Min": 0,
+                "Max": 10
+            }
+        ],
+        "DS_O": [
+            {
+                "ItemID": 0,
+                "ItemName": "Total travel - Opening (°)",
+                "Min": 45,
+                "Max": 56
+            },
+            {
+                "ItemID": 1,
+                "ItemName": "Overshoot angle (°)",
+                "Min": 0,
+                "Max": 20
+            },
+            {
+                "ItemID": 2,
+                "ItemName": "Swing back angle (°)",
+                "Min": 0,
+                "Max": 20
+            },
+            {
+                "ItemID": 3,
+                "ItemName": "Final angle (°)",
+                "Min": -4,
+                "Max": 4
+            },
+            {
+                "ItemID": 4,
+                "ItemName": "Opening angular velocity (°/ms)",
+                "Min": 1.5,
+                "Max": 4
+            },
+            {
+                "ItemID": 5,
+                "ItemName": "Contact synchronicity (ms)",
+                "Min": 0,
+                "Max": 10
+            }
+        ],
+        "ES_O": [
+            {
+                "ItemID": 0,
+                "ItemName": "Total travel - Opening (°)",
+                "Min": 47,
+                "Max": 56
+            },
+            {
+                "ItemID": 1,
+                "ItemName": "Overshoot angle (°)",
+                "Min": 0,
+                "Max": 20
+            },
+            {
+                "ItemID": 2,
+                "ItemName": "Swing back angle (°)",
+                "Min": 0,
+                "Max": 20
+            },
+            {
+                "ItemID": 3,
+                "ItemName": "Final angle (°)",
+                "Min": -4,
+                "Max": 4
+            },
+            {
+                "ItemID": 4,
+                "ItemName": "Opening angular velocity (°/ms)",
+                "Min": 1.7,
+                "Max": 4
+            },
+            {
+                "ItemID": 5,
+                "ItemName": "Contact synchronicity (ms)",
+                "Min": 0,
+                "Max": 10
+            }
+        ]
+    },
+    "TestResults": {
+        "Characteristics": [
+            [
+                {
+                    "TestTime": "2022/11/24 16:19:32",
+                    "Operation": "CB_C_O",
+                    "CB": 1,
+                    "DS": 0,
+                    "ES": 0,
+                    "VesselPressure": 0,
+                    "CurrentTimes": 1,
+                    "TestValues": {
+                        "CB_C": [
+                            [
+                                66.253,
+                                66.253,
+                                66.253
+                            ],
+                            [
+                                7.063,
+                                7.063,
+                                7.063
+                            ],
+                            [
+                                4.45,
+                                4.45,
+                                4.45
+                            ],
+                            [
+                                4.654,
+                                4.654,
+                                4.654
+                            ],
+                            [
+                                30.406,
+                                30.406,
+                                30.406
+                            ],
+                            [
+                                35.847,
+                                35.847,
+                                35.847
+                            ],
+                            [
+                                0,
+                                0,
+                                0
+                            ],
+                            [
+                                0,
+                                1.5,
+                                1
+                            ],
+                            [
+                                0,
+                                0.7,
+                                0.5
+                            ],
+                            [
+                                0,
+                                1,
+                                1
+                            ]
+                        ],
+                        "CB_O": [
+                            [
+                                66.208,
+                                66.208,
+                                66.208
+                            ],
+                            [
+                                1.811,
+                                1.811,
+                                1.811
+                            ],
+                            [
+                                4.051,
+                                4.051,
+                                4.051
+                            ],
+                            [
+                                4.051,
+                                4.051,
+                                4.051
+                            ],
+                            [
+                                1.811,
+                                1.811,
+                                1.811
+                            ],
+                            [
+                                4.462,
+                                4.834,
+                                4.834
+                            ],
+                            [
+                                0.1,
+                                0.1,
+                                0.1
+                            ]
+                        ]
+                    }
+                }
+            ],
+            [
+                {
+                    "TestTime": "2022/11/27 14:09:12",
+                    "Operation": "CB_AR",
+                    "CB": 4002,
+                    "DS": 0,
+                    "ES": 0,
+                    "VesselPressure": 0,
+                    "CurrentTimes": 2,
+                    "TestValues": {
+                        "Cycle1": {
+                            "CB_C": [
+                                [
+                                    66.242,
+                                    66.242,
+                                    66.242
+                                ],
+                                [
+                                    7.267,
+                                    7.267,
+                                    7.267
+                                ],
+                                [
+                                    4.495,
+                                    4.495,
+                                    4.495
+                                ],
+                                [
+                                    5.06,
+                                    5.06,
+                                    5.06
+                                ],
+                                [
+                                    29.707,
+                                    29.707,
+                                    29.707
+                                ],
+                                [
+                                    36.535,
+                                    36.535,
+                                    36.535
+                                ],
+                                [
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                [
+                                    1,
+                                    2,
+                                    1.1
+                                ],
+                                [
+                                    0.1,
+                                    0.5,
+                                    0.6
+                                ],
+                                [
+                                    2,
+                                    3,
+                                    1
+                                ]
+                            ],
+                            "CB_O": [
+                                [
+                                    65.955,
+                                    65.955,
+                                    65.955
+                                ],
+                                [
+                                    1.593,
+                                    1.593,
+                                    1.593
+                                ],
+                                [
+                                    4.168,
+                                    4.168,
+                                    4.168
+                                ],
+                                [
+                                    4.168,
+                                    4.168,
+                                    4.168
+                                ],
+                                [
+                                    1.593,
+                                    1.593,
+                                    1.593
+                                ],
+                                [
+                                    5.591,
+                                    5.591,
+                                    5.523
+                                ],
+                                [
+                                    0.2,
+                                    0.2,
+                                    0.2
+                                ]
+                            ]
+                        },
+                        "Cycle2": {
+                            "CB_C": [
+                                [
+                                    65.944,
+                                    65.944,
+                                    65.944
+                                ],
+                                [
+                                    8.44,
+                                    8.44,
+                                    8.44
+                                ],
+                                [
+                                    3.197,
+                                    3.197,
+                                    3.197
+                                ],
+                                [
+                                    3.987,
+                                    3.987,
+                                    3.987
+                                ],
+                                [
+                                    31.768,
+                                    31.768,
+                                    31.768
+                                ],
+                                [
+                                    34.176,
+                                    34.176,
+                                    34.176
+                                ],
+                                [
+                                    0,
+                                    0,
+                                    0
+                                ],
+                                [
+                                    1,
+                                    2,
+                                    1.1
+                                ],
+                                [
+                                    0.2,
+                                    0.4,
+                                    0.6
+                                ],
+                                [
+                                    2,
+                                    2,
+                                    1
+                                ]
+                            ],
+                            "CB_O": [
+                                [
+                                    66.364,
+                                    66.364,
+                                    66.364
+                                ],
+                                [
+                                    2.318,
+                                    2.318,
+                                    2.318
+                                ],
+                                [
+                                    4.278,
+                                    4.278,
+                                    4.278
+                                ],
+                                [
+                                    4.278,
+                                    4.278,
+                                    4.278
+                                ],
+                                [
+                                    2.318,
+                                    2.318,
+                                    2.318
+                                ],
+                                [
+                                    5.343,
+                                    5.343,
+                                    5.399
+                                ],
+                                [
+                                    0.2,
+                                    0.2,
+                                    0.2
+                                ]
+                            ]
+                        }
+                    }
+                }                               
+            ]
+        ],
+        "Resistance": [
+            {
+                "TestTime": "2022/11/24 16:18:32",
+                "CB": 0,
+                "DS": 0,
+                "ES": 0,
+                "VesselPressure": null,
+                "1st(mV)": [
+                    6.452,
+                    6.204,
+                    6.094
+                ],
+                "2nd(mV)": [
+                    6.594,
+                    6.26,
+                    6.265
+                ],
+                "3rd(mV)": [
+                    6.625,
+                    6.342,
+                    6.279
+                ],
+                "Average(mV)": [
+                    6.557,
+                    6.269,
+                    6.212
+                ]
+            },
+            {
+                "TestTime": "2022/11/26 1:54:39",
+                "CB": 2000,
+                "DS": 0,
+                "ES": 0,
+                "VesselPressure": null,
+                "1st(mV)": [
+                    6.66,
+                    6.087,
+                    6.089
+                ],
+                "2nd(mV)": [
+                    6.739,
+                    6.098,
+                    6.084
+                ],
+                "3rd(mV)": [
+                    6.708,
+                    6.081,
+                    6.076
+                ],
+                "Average(mV)": [
+                    6.702,
+                    6.089,
+                    6.083
+                ]
+            },
+            {
+                "TestTime": "2022/11/27 14:08:16",
+                "CB": 4000,
+                "DS": 0,
+                "ES": 0,
+                "VesselPressure": null,
+                "1st(mV)": [
+                    6.84,
+                    6.106,
+                    6.112
+                ],
+                "2nd(mV)": [
+                    6.838,
+                    6.109,
+                    6.115
+                ],
+                "3rd(mV)": [
+                    6.861,
+                    6.104,
+                    6.104
+                ],
+                "Average(mV)": [
+                    6.846,
+                    6.106,
+                    6.111
+                ]
+            },
+            {
+                "TestTime": "2022/12/1 5:23:17",
+                "CB": 10000,
+                "DS": 0,
+                "ES": 0,
+                "VesselPressure": null,
+                "1st(mV)": [
+                    6.693,
+                    6.086,
+                    6.011
+                ],
+                "2nd(mV)": [
+                    6.764,
+                    0.722,
+                    6.037
+                ],
+                "3rd(mV)": [
+                    6.762,
+                    6.094,
+                    6.075
+                ],
+                "Average(mV)": [
+                    6.74,
+                    4.301,
+                    6.041
+                ]
+            },
+            {
+                "TestTime": "2022/12/2 10:50:50",
+                "CB": 12000,
+                "DS": 0,
+                "ES": 0,
+                "VesselPressure": null,
+                "1st(mV)": [
+                    6.629,
+                    6.091,
+                    6.018
+                ],
+                "2nd(mV)": [
+                    6.688,
+                    6.135,
+                    6.013
+                ],
+                "3rd(mV)": [
+                    6.656,
+                    6.125,
+                    6.023
+                ],
+                "Average(mV)": [
+                    6.658,
+                    6.117,
+                    6.018
+                ]
+            }
+        ],
+        "Torque": []
+    }
+}

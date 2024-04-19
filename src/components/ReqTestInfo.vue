@@ -1,119 +1,66 @@
 <template>
-    <div >
-         
-          <div class="input-group ">
-                <label  class="input-group-text" for="doku">DOKU Number &nbsp;&nbsp;</label>
-                <input type="text" class="form-control" v-model="dokuNumber" @keyup.enter="loadTestInfo">
-                <!-- <button @click="loadTestInfo" class="gap btn btn-default">Get Test Info</button> -->
-                <!-- <button type="button" class="btn btn-primary" @click="show">按钮</button>-->
-              
-              <!-- 新增编辑弹框子组件 -->
-                <!-- <AddOrUpdate v-if="addOrUpdateVisible" :addOrUpdateVisible="addOrUpdateVisible" @changeShow="showAddOrUpdate" ref="addOrUpdateRef"></AddOrUpdate>  -->
-          </div>          
-      <!-- <button @click="testData" class="btn btn-default">Get Test Data</button> -->
-     </div>     
+
+  <el-row >
+
+    <el-col  :span="16">
+        <div class="grid-content ep-bg-purple"/>
+    </el-col>
+    <el-col :span="8">
+      <div class="grid-content ep-bg-purple"/></el-col>
+
+  </el-row>
+
+  
 </template>
 
-
+   
 <script setup lang="ts" name="ReqTestInfo">
 
-  import {ref, reactive} from 'vue'
+  import {ref, type Ref, reactive, onMounted, watchEffect, watch} from 'vue'
   import {storeToRefs} from 'pinia'
-  import {useTestInfo} from "../stores/useTestInfo"
+  import {useTestInfo} from "@/stores/useTestInfo_Options"
+  import {type TestInfoRecord} from '../types/index'
 
 
-  let testInfo = useTestInfo()
+  const testInfo = useTestInfo()
 
-  let {allTestInfo, dokuNumber} = storeToRefs(testInfo)
+  const {allTestInfo, dokuNumber, arrangedDokuList} = storeToRefs(testInfo)
+  
+  const year = ref<string>('')
+  const test = ref<string>('')
 
-  function loadTestInfo (){
+ 
+  let yearList = ref <string[]>([])  //['2022','2023','2024']
+  let dokuList = ref <string[]>([])  //["23-1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;","23-088&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8DJH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L2 500"]
+
+  watchEffect(()=>{           
+      console.log(`year.value 的值是"${year.value}",类型是${typeof year.value}`)
+      yearList.value = Object.keys(arrangedDokuList.value)      
+      if (year.value.length != 0) {        
+          let arr = arrangedDokuList.value[yearList.value[Number(year.value)]]
+          dokuList.value = arr.map((x:{[key:string]:string})=>{
+                                    return x.dokuno + '&nbsp;'.repeat(12-x.dokuno.length) + 
+                                    ( x.prod == null ? '' : ('&nbsp;'.repeat(12-x.prod.length) + x.prod))   +
+                                    ( x.typical == null ? '' : ('&nbsp;'.repeat(14-x.typical.length) + x.typical ))                         
+                            })
+      } 
+      test.value = ''   
+          
+  })  
+
+  // testInfo.$subscribe()
+
+  // onMounted(()=>{
+  //     testInfo.getAllAvaliableTestInfo()      
+  // })
+
+  function loadTestInfo(){
+    // console.log(`year.value = ${year.value}, test.value = ${test.value}, type of year.value is ${typeof year.value}, type of year.value is ${typeof test.value}`)
+    if(dokuList.value[Number(test.value)]){      
+      dokuNumber.value = arrangedDokuList.value[yearList.value[Number(year.value)]][Number(test.value)].dokuno
       testInfo.loadTestInfo()
-  } 
-
-
-
-
-// function loadTestInfo() {
-//         // Nprogress.start()    
-//         console.log(allTestInfo.value) 
-//         axios.get(`/get-me-record?doku=${dokuNumber.value}`)     //https://63mr015465.imdo.co        
-//               .then(res =>{
-//                       // if (res.data.message.length > 0) {
-//                       // console.log(axios.defaults.transformRequest)  
-//                       console.log(res.data)
-//                       // Nprogress.done() 
-//                       // if (res.status === 0) {
-                          
-//                       //     this.getTestInfo(JSON.parse(res.message[0].testInfo))
-//                       //     this.setDokuNumber(this.dokuNumber)
-//                       //     // console.log(this.$router)
-//                       //     // this.$router.go(this.$router.options[1])
-//                       //     // this.$router.replace('/refresh')
-//                       // }else {alert("Worng DOKU number!")}
-//                     },
-//                     err => {alert(err)}
-//                )
-//     }
-// // import Nprogress from 'nprogress'
-// import 'nprogress/nprogress.css'
-// import AddOrUpdate from '../pages/AddOrUpdate.vue'
-
-// import { arrayBuffer } from "stream/consumers";
-// import $ from 'jquery'
-
-
-
-// export default {
-//   name: "ReqTestInfo",
-//   data() {
-//     return {
-//       dokuNumber:"",
-//       // addOrUpdateVisible: false
-//     };
-//   },
-//   // components:{
-//   //   AddOrUpdate,
-//   // },
-
-//   methods: {
-//     loadTestInfo() {
-//         console.log("wait...")    
-//         Nprogress.start()     
-//         axios.get(`/get-me-record?doku=${this.dokuNumber}`)     //https://63mr015465.imdo.co
-        
-//               .then(res =>{
-//                       // if (res.data.message.length > 0) {
-//                       console.log(axios.defaults.transformRequest)  
-//                       Nprogress.done() 
-//                       if (res.status === 0) {
-                          
-//                           this.getTestInfo(JSON.parse(res.message[0].testInfo))
-//                           this.setDokuNumber(this.dokuNumber)
-//                           // console.log(this.$router)
-//                           // this.$router.go(this.$router.options[1])
-//                           // this.$router.replace('/refresh')
-//                       }else {alert("Worng DOKU number!")}
-//                     },
-//                     err => {alert(err)}
-//                )
-//     },
-//     // show(){
-//     //         this.addOrUpdateVisible = true
-//     //     },
-//     //     // 监听 子组件弹窗关闭后触发，有子组件调用
-//     // showAddOrUpdate(data){
-//     //     if(data === 'false'){
-//     //         this.addOrUpdateVisible = false
-//     //     }else{
-//     //         this.addOrUpdateVisible = true
-//     //     }
-//     // }
-
-    
-//   },
-//   props: ["getTestInfo","setDokuNumber"]      //, "getRawData",
-// };
-
+    }
+  }
 
 
 </script>
@@ -125,7 +72,60 @@
     /* background-color: #337ab7; */
     color: white;
   }
-  
 
+  .el-row {
+  height: 100px;  
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.el-row:last-child {
+  margin-bottom: 0;
+}
+.el-col {
+  border-radius: 4px; 
+  background-color: --el-color-primary-light-3;
+}
+
+.grid-content {
+  border-radius: 4px;
+  min-height: 36px;
+  
+}
 </style>
 
+
+<!--  <div class="row">
+  <ul class="row nav nav-tabs col-5 fs-6 text-nowrap g-2">
+      <li class="nav-item col ">
+        <a class="nav-link active" aria-current="page" href="#">Curve Analyzing</a>
+      </li>
+      <li class="nav-item col">
+        <a class="nav-link" href="#">Parameter Analyzing</a>
+      </li>
+      <li class="nav-item col">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled">Disabled</a>
+      </li> 
+  </ul>    
+  <form class="row  col-7 align-items-center fs-6 g-2">
+      <div class="col-3">
+          <label class="visually-hidden" for="inlineFormSelectPref">Year of Test</label>
+          <select class="form-select" id="inlineFormSelectPref" v-model="year">
+              <option selected disabled value="">Test Year</option>
+              <option v-for="(v,i) in yearList"  :value="String(i)"> {{v}} </option> 
+          </select>
+      </div>
+      <div class="col-6">
+          <label class="visually-hidden" for="inlineFormSelectPref">Doku Number</label>
+          <select class="form-select" id="inlineFormSelectPref" v-model="test">
+            <option selected disabled value="">DOKU Number</option>
+            <option v-for="(v,i) in dokuList" v-html="v" :value="String(i)">  </option> 
+          </select>
+      </div>
+      <div class="col-3" >
+        <button type="button" class="btn btn-primary" @click="loadTestInfo" >Get Data</button>
+      </div>
+  </form>     
+</div>   -->

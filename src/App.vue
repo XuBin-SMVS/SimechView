@@ -1,58 +1,31 @@
 <template>
-    <div  class="container">
-          <div class="row">
-            <div class="col-md-4 mt-auto">
-              <!-- <div class="row">
-                    <button  class="col btn mt-2 me-1 btn-lg fs-6 text-nowrap "  
-                    :class="{'btn-primary':isActive[0], 'btn-secondary':!isActive[0]}"
-                    ref="curBtn" disabled="disable"  
-                    @click = "showCurve" style="cursor: pointer;">
-                      
-                      <strong>Curve Analyzing</strong> 
-                    </button> 
-                    <button  class="col btn mt-2 me-1  btn-lg fs-6 text-nowrap" ref="paraBtn"
-                      :class="{'btn-primary':isActive[1],'btn-secondary':!isActive[1]}" 
-                      @click = "parameterAnalyzing"   style="cursor: pointer;" disabled="disable">
-                      <strong>  Parameter Analyzing</strong>
-                    </button>
-              </div> -->
-            </div> 
-            <div class="col-md-1"></div>
-            <ReqTestInfo  class="col-md-5  mt-auto"  />  <!--:getTestInfo = "getTestInfo" :setDokuNumber = "setDokuNumber"-->
+    <div  class="container-xxl">
+          <div >
+        
+            <ReqTestInfo />
+              <!--:getTestInfo = "getTestInfo" :setDokuNumber = "setDokuNumber"-->
               <!-- <router-link  class="list-group-item col-md-1">test2</router-link> -->
-        </div>
-  
+            
         
+        </div>      
+
+       
         
-        <!-- <div >
-            <keep-alive :include = "aliveRouteList">
+        <div >
+            <keep-alive >
               <router-view ></router-view>
             </keep-alive>
-        </div> -->
+        </div>
    
     </div>
+
+
   </template>
   
-  <script setup lang="ts" name="ReqTestInfo">    
-    import ReqTestInfo from "./components/ReqTestInfo.vue"
-    //   data() {
-    //     return {
-    //       allTestInfo: {},
-    //       // testRawData: {},
-    //       // selectedChannel: -1,
-    //       // selectedGroup: "",
-    //       // selectedChannelName:"",
-    //       hasOthersData:false,
-    //       dokuNumber: "",
-    //       // channelFilter:1,
-    //       keyInApp:0,
-    //       isActive:[0,0],
-    //       aliveRouteList:['CurveShow','ParameterShow'],
-    //       baseUrl:window.location.origin
-    //     }
-    //   },
+  <script setup lang="ts" name="App">    
 
-  
+    import ReqTestInfo from "@/components/ReqTestInfo.vue"
+ 
 
     //   methods: {
     //     getTestInfo(allTestInfo) {
@@ -143,7 +116,7 @@
   </script>
   
   <style scoped >
-    /* #wrapper {
+    #wrapper {
     margin: 0px auto;
     min-width: 1170px;
     width: 1300px; 
@@ -162,7 +135,7 @@
     text-align: center;
     line-height: 27px;
     vertical-align:middle;
-  } */
+  }
   
   
   </style>
