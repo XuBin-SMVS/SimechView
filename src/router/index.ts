@@ -1,26 +1,24 @@
-// import VueRouter from 'vue-router'
-// import CurveShow from '../pages/CurveShow'
-// import ParameterShow from '../pages/ParameterShow'
-// import refresh from '../pages/refresh'
+
 import {createRouter,  createWebHashHistory} from 'vue-router'
 import Root from '@/pages/root.vue'
 // import ParameterSelect from '../pages/ParameterSelect'
 
+import CurveShow  from '@/pages/CurveShow/CurveShow.vue'
 
 const  router = createRouter({
     history: createWebHashHistory(),
     routes:[
         {
             path:'/',
+            name: 'root',
             component:Root
-
-        }
-        // {
-        //     path:'/curveshow',
-        //     name:'curveshow',           
-        //     component:CurveShow,        
-        //     props:true
-        // },
+        },
+        {
+            path:'/curveshow',
+            name:'curveShow',           
+            component:CurveShow,        
+            // props:true
+        },
         // {
 		// 	name:'parametershow',
 		// 	path:'/parametershow',

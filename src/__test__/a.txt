@@ -1,0 +1,30 @@
+          <tr v-for="(v, i) in characteristicLimits[tableKey1]" :key="tableKey1 + i">    
+                <td class="" >{{ v.ItemID }}</td>         <!-- 序号 -->
+                <td  class="">{{ v.ItemName }}</td>                                 <!-- 描述 -->
+                <td class=""  v-bind:class='{"table-danger":!outOfTolerance[tableKey1][i][0]}'  @mouseenter="enter"  @mouseleave="leave" @mousemove="move">
+                     {{ Characteristics[tableKey1][i][0] }}               <!-- A相值  v-bind:class="{ isError: !judge[i][0] }"-->
+                </td>
+                <td class=""  v-bind:class='{"table-danger":!outOfTolerance[tableKey1][i][1]}'  @mouseenter="enter"  @mouseleave="leave" @mousemove="move">
+                    {{ Characteristics[tableKey1][i][1] }}               <!-- B相值  v-bind:class="{ isError: !judge[i][1] }"-->
+                </td>
+                <td class=""  v-bind:class='{"table-danger":!outOfTolerance[tableKey1][i][2]}'  @mouseenter="enter"  @mouseleave="leave" @mousemove="move">
+                    {{ Characteristics[tableKey1][i][2] }}                <!-- C相值 v-bind:class="{ isError: !judge[i][2] }" -->
+                </td>
+                <div  class="hover_con"  style="display:none" > min: <strong>: {{outOfTolerance[tableKey1][i][3]}}</strong> max: <strong>: {{outOfTolerance[tableKey1][i][4]}}</strong></div> 
+          </tr>
+          <!-- <tr ><td colspan="5" style = "height : 5px"><hr style="height:3px;border:none;border-top:3px double red;" /> </td></tr> -->
+          <tr><td colspan="5" style = "background-color: skyblue; font-size: 12px; text-align: center; font-weight: bold; padding:1px auto; "> Interval Time : {{intervalTime}} s</td></tr>
+          <tr v-for="(v, i) in CharacteristicsLimits[tableKey2]" :key="tableKey2 + i">
+                <td class="" >{{ v.ItemID }}</td>         <!-- 序号 -->
+                <td  class="">{{ v.ItemName }}</td>                                 <!-- 描述 -->
+                <td class=""  v-bind:class='{"table-danger":!outOfTolerance[tableKey2][i][0]}'  @mouseenter="enter"  @mouseleave="leave" @mousemove="move">
+                    {{ Characteristics[tableKey2][i][0] }}               <!-- A相值  v-bind:class="{ isError: !judge[i][0] }"-->
+                </td>
+                <td class=""   v-bind:class='{"table-danger":!outOfTolerance[tableKey2][i][1]}' @mouseenter="enter"  @mouseleave="leave" @mousemove="move">
+                    {{ Characteristics[tableKey2][i][1] }}               <!-- B相值  v-bind:class="{ isError: !judge[i][1] }"-->
+                </td>
+                <td  class=""  v-bind:class='{"table-danger":!outOfTolerance[tableKey2][i][2]}' @mouseenter="enter"  @mouseleave="leave" @mousemove="move">
+                   {{ Characteristics[tableKey2][i][2] }}                <!-- C相值 v-bind:class="{ isError: !judge[i][2] }" -->
+                </td>
+                <div  class="hover_con"  style="display:none"> min: <strong>{{outOfTolerance[tableKey2][i][3]}}</strong> max: <strong>{{outOfTolerance[tableKey2][i][4]}}</strong></div> 
+         </tr> 

@@ -8,7 +8,6 @@ import viteDevConfig from  "./vite.dev.config"
 import viteProdConfig from "./vite.prod.config"
 
 
-
 const envResolver = {
   "build" : ()=> {
     console.log("生产环境");        

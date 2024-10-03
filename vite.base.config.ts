@@ -8,11 +8,14 @@ import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 import  ElementPlus from 'unplugin-element-plus/vite'
 // import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
+import WindiCSS from 'vite-plugin-windicss'
+
 export default defineConfig({
     plugins: [
       vue(),
       VueSetupExtend(),
-      ElementPlus({useSource: false}),
+      ElementPlus({useSource: true}),
+      WindiCSS()
       // AutoImport({
       //   resolvers: [ElementPlusResolver()],
       // }),
@@ -20,10 +23,20 @@ export default defineConfig({
       //   resolvers: [ElementPlusResolver()],
       // }),
     ],
+    css:{
+      preprocessorOptions: {
+        scss: {
+          // additionalData: `@use "@/styles/element/index.scss" as *;`,
+          javascriptEnabled: true
+        }
+      }
+    },
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
+
+
     },    
 
     optimizeDeps:{

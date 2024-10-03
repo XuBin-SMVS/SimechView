@@ -1,20 +1,21 @@
 <template>
 
-<!--v-if= "loading"-->
+<!--v-if= "loading"
+style="width: 300px;"-->
 
     <div>
-      <el-button v-if="!loading"
-          style="width: 300px;"
+      <el-button v-if="!loading"          
           :type = "loaded ? 'primary' : 'info'" 
-          class="button-class" 
+          class="myButton" 
           @click = "startLoading">
-      Click Me to try it for a while
+          
       </el-button>
       <el-progress  v-if="loading"
           :text-inside="true"   
-          :stroke-width="36" 
+          :stroke-width="36"
           :percentage = "percentage"
-          style="width: 300px;">    
+          class="myButton" 
+      >    
       </el-progress>  
     </div> 
 
@@ -24,9 +25,12 @@
 
 <script setup name="myButton">
 
-  import {ref} from "vue"
+  import {ref, h} from "vue"
   
+  defineProps(['ope', 'num1', 'num2'])
 
+ const buttonText = h('el-icon','DArrowRight')
+ console.log(buttonText)
   let [loading, loaded] = [ref(false), ref(false)]
   let percentage = ref(0)
 
@@ -35,6 +39,9 @@
     setTimeout(()=>{
       setTimeout(progressGo,100)
     })
+    
+
+
   }
 
   function  progressGo() {
@@ -45,43 +52,29 @@
       loaded.value = true
       percentage.value=0
     }
-  }
-
- 
-        
+  }        
 
 </script>
 
 <style scoped>
-.demo-progress .el-progress--line {
-  /* margin-bottom: 15px; */
-  max-width: 600px;
- }
 
- :deep(.el-progress-bar__outer) {
-   border-radius: 10px;
-   /* background-color: rgba(255,255,255, 100);  */
-   
+
+ :deep(.el-button) {
+   border-radius: 5px;
+}
+
+:deep(.el-progress-bar__inner ){
+   border-radius:5px;
+}
+
+:deep( .el-progress-bar__outer){
+   border-radius:5px;
+}
+
+.myButton {
+  @apply m-0 p-0 w-[calc(100%)];
+  /* width: 100%; */
   
-   /* color: blue;   */
 }
 
-:deep(.el-progress-bar__inner){
-   border-radius:10px;
-
-   /* color: blue;   */
-}
-
-:deep(.el-button){
-   border-radius:10px;
-
-   /* color: blue;   */
-}
-/* .button-class{
-  width: 300px;
-  height: 40px;
-  border-radius: 10px;
-  position: absolute;
-  z-index: 2
-} */
 </style>

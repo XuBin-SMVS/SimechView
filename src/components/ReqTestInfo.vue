@@ -1,69 +1,93 @@
 <template>
 
-  <el-row >
-
-    <el-col  :span="16">
-        <div class="grid-content ep-bg-purple"/>
-    </el-col>
+  <el-row class="divide-y-4" :gutter="10" justify="center">
     <el-col :span="8">
-      <div class="grid-content ep-bg-purple"/></el-col>
+      <el-button 
+        size="large"  type="primary"
+        :disabled="!dokuNumber"
+        @click="pageSelect('curveShow')">
+         Cureve Analyzing
+      </el-button>
+
+      <el-button size="large"> Parameter Analyzing</el-button>      
+    
+    </el-col>
+    <el-col :span="10" >
+      
+        <el-select v-model="year"  placeholder="Select Year"  size="large"  style="width: 150px ; margin-right: 10px;"  >
+            <el-option v-for="(item, i) in yearList"  :key = "i"  :value = "item" />
+        </el-select>
+
+        <el-select  v-model="test"  placeholder="Select Doku Number"  size="large"  style="width: 200px; margin-right: 20px;" >
+            <el-option v-for="doku in dokuList"  :key="doku.dokuno"  :value = "doku.dokuno">
+              <el-space wrap :size="30">
+                <span>{{ doku.dokuno }}</span>
+                <span> {{ doku.prod }}</span>
+                <span>{{ doku.typical }}</span>
+              </el-space>
+
+            </el-option>
+           
+        </el-select>
+
+        <el-button :disabled = "test === dokuNumber"  type="primary" @click="loadTestInfo">Primary</el-button>
+
+  </el-col>
 
   </el-row>
 
   
 </template>
-
-   
+  
 <script setup lang="ts" name="ReqTestInfo">
 
-  import {ref, type Ref, reactive, onMounted, watchEffect, watch} from 'vue'
+  import {ref, onMounted, watch} from 'vue'
   import {storeToRefs} from 'pinia'
   import {useTestInfo} from "@/stores/useTestInfo_Options"
-  import {type TestInfoRecord} from '../types/index'
+  import { type AllAvaliableTestInfo} from '../types/index'
 
 
   const testInfo = useTestInfo()
 
-  const {allTestInfo, dokuNumber, arrangedDokuList} = storeToRefs(testInfo)
+  const {dokuNumber, arrangedDokuList} = storeToRefs(testInfo)
   
   const year = ref<string>('')
   const test = ref<string>('')
 
- 
-  let yearList = ref <string[]>([])  //['2022','2023','2024']
-  let dokuList = ref <string[]>([])  //["23-1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;","23-088&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8DJH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L2 500"]
+  defineProps(['pageSelect'])
 
-  watchEffect(()=>{           
-      console.log(`year.value 的值是"${year.value}",类型是${typeof year.value}`)
-      yearList.value = Object.keys(arrangedDokuList.value)      
-      if (year.value.length != 0) {        
-          let arr = arrangedDokuList.value[yearList.value[Number(year.value)]]
-          dokuList.value = arr.map((x:{[key:string]:string})=>{
-                                    return x.dokuno + '&nbsp;'.repeat(12-x.dokuno.length) + 
-                                    ( x.prod == null ? '' : ('&nbsp;'.repeat(12-x.prod.length) + x.prod))   +
-                                    ( x.typical == null ? '' : ('&nbsp;'.repeat(14-x.typical.length) + x.typical ))                         
-                            })
-      } 
-      test.value = ''   
-          
-  })  
+     
+  let yearList = ref <string[]>([])  //['2022','2023','2024']
+  let dokuList = ref <AllAvaliableTestInfo>()  //["23-1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;","23-088&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8DJH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L2 500"]
+
+  watch(arrangedDokuList, ()=>{
+    yearList.value = Object.keys(arrangedDokuList.value)     
+  },{deep:true})
+
+  watch(year,()=>{         
+      dokuList.value = arrangedDokuList.value[year.value]  
+      // test.value = ''  
+  })
 
   // testInfo.$subscribe()
 
-  // onMounted(()=>{
-  //     testInfo.getAllAvaliableTestInfo()      
-  // })
+  onMounted(()=>{
+      testInfo.getAllAvaliableTestInfo()      
+      // console.log(testInfo.groups)
+  })
 
   function loadTestInfo(){
     // console.log(`year.value = ${year.value}, test.value = ${test.value}, type of year.value is ${typeof year.value}, type of year.value is ${typeof test.value}`)
-    if(dokuList.value[Number(test.value)]){      
-      dokuNumber.value = arrangedDokuList.value[yearList.value[Number(year.value)]][Number(test.value)].dokuno
+      console.log(testInfo.groups)
+      dokuNumber.value = test.value
       testInfo.loadTestInfo()
-    }
   }
-
+ 
 
 </script>
+
+
+
 
 <style scoped>
   .gap {
@@ -91,6 +115,13 @@
   min-height: 36px;
   
 }
+
+.ep-bg-purple {
+    background: #d3dce6;
+  }
+  .ep-bg-purple-light {
+    background: #e5e9f2;
+  }
 </style>
 
 

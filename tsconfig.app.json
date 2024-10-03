@@ -2,12 +2,11 @@
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": [
     "env.d.ts", 
-    "src/**/*", "src/**/*.vue", 
+    "src/**/*", "src/**/*.vue",
     "vite.config.ts",
     "vite.dev.config.ts",
     "vite.base.config.ts",
     "vite.prod.config.ts"
-
   ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
@@ -18,5 +17,11 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-  }
+    "target": "esnext",
+    "module": "esnext",
+    "strict": false,
+    "jsx": "preserve",
+    "moduleResolution": "node"
+  },
+
 }

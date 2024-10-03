@@ -1,7 +1,10 @@
+
+import type {EChartsOption} from 'echarts'
+
 export type AllAvaliableTestInfo = TestInfoRecord[] 
 
 export type TestInfoRecord = {
-    dokono: string,
+    dokuno: string,
     prod: string,
     typical:string,
     [key:string]:any
@@ -48,75 +51,56 @@ export type CharacteristicsOfEachOperation = {
     "TestValues": TestValueSingle | TestValueAR
 }
 
-export type AutoTestInfo = {
+export type SingleTestProcess = 
+    { 
+        CaseName:"CB_C_O" | "CB_CO" | "CB_AR" | "DS_C_O" | "ES_C_O",
+        Cycle: number,
+        Interval1:number,
+        Interval2:number,
+        TriggerCycleResistance:number,
+        TriggerCycleTorque:0
+    }
+
+
+export interface AutoTestInfo  {
     Doku:string,
-    TestProcess:[][],
+    TestProcess:number | SingleTestProcess[][],
     CharacteristicsLimits: CharacteristicsLimits,
     TestResults:{ 
         Characteristics: CharacteristicsOfEachOperation[][],
         Resistance:[],
         Torque:[]
     }
-
-
-
 }
 
-// export type Persons = Array <Person>
+export type Groups = [string, number, number, number[]][]   //[操作case(ES_CO,DS_CO,CB_C_O......),本case开始的次数，本case结束的次数，各操作次数的数组]
+
+/* 单个通道数据格式 */
+export type Channel = { 
+    "name": string,
+    "dataType": string,
+    "dataLength": number,
+    "wf_start_time": string,
+    "wf_start_offset": number,
+    "wf_increment": number,
+    "wf_samples": number,
+    "NI_ChannelName": string,
+    "NI_LineNames": string,
+    "data": Array<number>
+}
+
+export interface OperationRecord  {"name":string, "channels":Channel[]}
+/* 每个case的数据数组，第次操作数据{name:"DS_CO,0,1,0", channels: [每次操作的所有通道数据的数组]}  */
+
+export type GroupOfOperationRecords = OperationRecord[]
+
+/* 试验的所有原始数据的数组 name是每个case的名称，如："DS_CO_00"，"CB_C_O_01"" */
+
+export type TestRowData = {groups: GroupOfOperationRecords, name:string, mode:number}[]
 
 
-
-/* 
-{
-    dokuno:
-    projectname: 
-    workorderno: 
-    testobject: 
-    prod:
-    typical: 
-    ratedvoltage: 
-    ratedcurrent: 
-    eid:
-    testtype: 
-    sampleqty: 
-    testlab: 
-    testcategory:
-    clientdept: 
-    clientandtel: 
-    internalorderno: 
-    testitem: 
-    designation: 
-    testobjectdescription: 
-    partrelease: 
-    testobjectphoto: 
-    aim:
-    previousdokuno: 
-    testprocess: 
-    testprocessnotes: 
-    testprocessphoto: 
-    testprocesstr: 
-    testprocesshv: 
-    bom: 
-    keydrawing: 
-    techdata: 
-    status: 
-    keycomponent: 
-    testfolder: 
-    testattachments:
-    issampleready: 
-    isdesignphotouploaded: 
-    isphotoreadybeforetest: 
-    approver: 
-    approvetime: 
-    confirmer: 
-    confirmtime: 
-    username: 
-    orderdate: 
-    updatetime: 
-    comments: 
-    teststarttime: 
-    testfinishtime: 
-    accepttime: 
-    autotestjson: 
-  }
-  */
+export interface SelectedSingleOperation extends OperationRecord {
+    "testValue"?: TestValueSingle | TestValueAR,
+    "characteristicsLimits"?: CharacteristicsLimits,
+    
+}
